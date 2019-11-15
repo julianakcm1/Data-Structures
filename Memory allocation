@@ -1,0 +1,31 @@
+#Alocação de Memória Dinâmica
+
+*Malloc
+  Aloca na heap a quantidade de bytes do tipo desejado;
+  Retorna um ponteiro do tipo void para a primeira posição dessa memória alocada;
+  Heap aloca memória dinamicamente e não desaloca, para isso, free;
+  Pilha aloca memória e desaloca automaticamente;
+  Retorna _NULL_ caso não haja memória disponível.
+  
+    int *p;
+
+    p = (int*) malloc (n * sizeof (int));
+    p = (int**) malloc (linhas * sizeof (int *)); //matriz dinâmica como parâmetro
+  
+*Calloc
+  Aloca dinamicamente um número específico de blocos de um tipo específico;
+  Inicializa a área de memória com valor zero (bit zero);
+  Pouco utilizada por ser mais lenta que malloc;
+  Retorna _NULL_ caso não haja memória disponível.
+  Calloc = malloc() + memset().
+
+    int *p;
+    
+    p = (int*) calloc (n, sizeof (int));
+    
+*Realloc
+   Retorna _NULL_ caso não haja memória disponível.
+   
+    int *p;
+    
+    p = (int*) realloc (a, n * sizeof (int));
