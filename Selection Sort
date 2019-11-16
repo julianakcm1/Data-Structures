@@ -40,6 +40,8 @@ interno. A complexidade deste algoritmo será sempre **O(n²)**.
   
 *Implementação:
 
+C:
+
 void selection_sort(int array[], int n) { 
   int i, j, min, aux;
   
