@@ -24,6 +24,10 @@ n-1 elementos restantes, até os últimos dois elementos.
                                             // and place it at beginning of arr[3...4]
                                             11 12 22 25 64 
 
++Encontra o menor elemento da lista;
++Insere esse elemento numa nova lista e remove-o da lista de origem;
++Repete os dois passos anteriores até que lista original seja vazia.
+
 *Complexidade:
   O selection sort compara a cada interação um elemento com os outros, visando encontrar o menor. Dessa forma, podemos entender que não 
 existe um melhor caso mesmo que o vetor esteja ordenado ou em ordem inversa serão executados os dois laços do algoritmo, o externo e o 
