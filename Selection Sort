@@ -1,0 +1,60 @@
+#Selection Sort
+
+!(https://he-s3.s3.amazonaws.com/media/uploads/2888f5b.png)
+
+  A ordenação por seleção é um algoritmo de ordenação baseado em se passar sempre o menor valor do vetor para a primeira posição (ou 
+o maior dependendo da ordem requerida), depois o de segundo menor valor para a segunda posição, e assim é feito sucessivamente com os 
+n-1 elementos restantes, até os últimos dois elementos.
+
+                                            arr[] = 64 25 12 22 11
+
+                                            // Find the minimum element in arr[0...4]
+                                            // and place it at beginning
+                                            11 25 12 22 64
+
+                                            // Find the minimum element in arr[1...4]
+                                            // and place it at beginning of arr[1...4]
+                                            11 12 25 22 64
+
+                                            // Find the minimum element in arr[2...4]
+                                            // and place it at beginning of arr[2...4]
+                                            11 12 22 25 64
+
+                                            // Find the minimum element in arr[3...4]
+                                            // and place it at beginning of arr[3...4]
+                                            11 12 22 25 64 
+
+*Complexidade:
+  O selection sort compara a cada interação um elemento com os outros, visando encontrar o menor. Dessa forma, podemos entender que não 
+existe um melhor caso mesmo que o vetor esteja ordenado ou em ordem inversa serão executados os dois laços do algoritmo, o externo e o 
+interno. A complexidade deste algoritmo será sempre **O(n²)**.
+
+*Vantagens:
+  Fácil implementação;
+  Ocupa menos memória pois não necessita de um vetor auxiliar;
+  É um dos mais velozes na ordenação de vetores pequenos.
+  
+*Desvantagens:
+  É um dos mais lentos para vetor grande;
+  Sempre faz (n² - n) / 2 comparações.
+  
+*Implementação:
+
+void selection_sort(int array[], int n) { 
+  int i, j, min, aux;
+  
+  for (i = 0; i < n - 1; ++i) 
+  {
+     min = i;     // assuming the first element to be the minimum of the unsorted array
+     
+     for (j = i+1; j < n; ++j) {
+       if(array[j] < array[min]) min = j;       //finds the minimum element
+     }
+     
+     if (array[i] != array[min]) { //or swap (&array[i], &array[min]);      // putting minimum element on its proper position
+       aux = array[i];
+       array[i] = array[min];
+       array[min] = aux;
+     }
+  }
+}
