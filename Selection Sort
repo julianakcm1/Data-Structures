@@ -40,7 +40,7 @@ interno. A complexidade deste algoritmo será sempre **O(n²)**.
   
 *Implementação:
 
-C:
+**C**
 
 void selection_sort(int array[], int n) { 
   int i, j, min, aux;
@@ -60,3 +60,23 @@ void selection_sort(int array[], int n) {
      }
   }
 }
+
+**Haskell**
+
+selection:: (Ord a) => [a]->[a]
+selection [] = []
+selection xs = [x] ++ selecao (remove x xs)
+                    where x = minimum xs
+                    
+remove:: (Ord a) => a->[a]->[a]
+remove a [] = []
+remove a (x:xs)
+  | a==x = xs
+  | otherwise = x:(remove a xs)
+      
+minimum::(Ord a) => [a]->a
+minimum [] = undefined
+minimum [x] = x
+minimum (x:xs)
+ | x <= (minimum xs) = x
+ | otherwise = minimum xs
