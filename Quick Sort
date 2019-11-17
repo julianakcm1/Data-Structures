@@ -7,7 +7,7 @@ Considere o primeiro elemento da lista como um elemento pivô da ordenação.
 Particione a lista inicial em duas novas listas: 
 a primeira deve conter os elementos menores que o elemento pivo e a segunda contendo os maiores.
 Concatene a lista com os menores, seguida do elemento pivô, seguida dos elementos maiores.
-Repetir as açõess acima até que toda a lista esteja particionada. 
+Repetir as ações acima até que toda a lista esteja particionada. 
 
 *Complexidade:
 
