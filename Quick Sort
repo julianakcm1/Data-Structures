@@ -1,0 +1,71 @@
+#Quick Sort
+
+Divisão e conquista.
+
++Estratégia de ordenação:
+Considere o primeiro elemento da lista como um elemento pivô da ordenação.
+Particione a lista inicial em duas novas listas: 
+a primeira deve conter os elementos menores que o elemento pivo e a segunda contendo os maiores.
+Concatene a lista com os menores, seguida do elemento pivô, seguida dos elementos maiores.
+Repetir as açõess acima até que toda a lista esteja particionada. 
+
+*Complexidade:
+
+Melhor e médio casos: O(n log n)
+Pior caso: O(n²)
+
+*Vantagens:
+  É um dos algoritmos de ordenação mais rápidos;
+  Eficiente;
+  Não há necessidade de espaço adicional de armazenamento;
+  Funciona muito bem com listas grandes
+
+*Desvantagens:
+  Implementação delicada e difícil.
+
+*Implementação:
+
+**C**
+
+void quick_sort (int array[], int size) {
+  if (size <= 1) return;
+  else {
+    int pivot = array [size/2];
+    int a = 0;
+    int b = size - 1;
+    
+    while (a < b) {
+      while (array[a] < pivot) ++a;
+      while (array[b] > pivot) --b;
+      if (a < b) swap (&array[a], &array[b]);
+    }
+    quick_sort (array, b);
+    quick_sort (array + a, size - a);
+  }
+}
+
+or 
+
+int partition ( int A[],int start ,int end) {
+    int i = start + 1;
+    int piv = A[start] ;            //make the first element as pivot element.
+    for(int j =start + 1; j <= end ; j++ )  {
+    /*rearrange the array by putting elements which are less than pivot
+       on one side and which are greater that on other. */
+
+          if ( A[ j ] < piv) {
+                 swap (A[ i ],A [ j ]);
+            i += 1;
+        }
+   }
+   swap ( A[ start ] ,A[ i-1 ] ) ;  //put the pivot element in its proper place.
+   return i-1;                      //return the position of the pivot
+}
+
+**Haskell**
+
+quickSort :: [Int] -> [Int]
+quickSort [] = []
+quickSort (a:as) = quickSort [x | x <- as, x < a]
+                   ++ [a] ++
+                   quickSort [x | x <- as, x >= a]
