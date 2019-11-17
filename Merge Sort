@@ -1,0 +1,131 @@
+#Merge Sort
+Algoritmo Criado por Von Neumann em 1945.
+
+  Sua ideia básica consiste em Dividir (o problema em vários subproblemas e resolver esses subproblemas através da recursividade) e 
+Conquistar (após todos os subproblemas terem sido resolvidos ocorre a conquista que é a união das resoluções dos subproblemas).
+
+*Complexidade:
+  O(n log n)
+
+*Vantagens:
+  Rápido e eficiente (altamente paralelizável) quando é utilizado sobre uma grande quantidade de dados.
+  Requer um menor número de acesso à memória.
+
+*Desvantagens:
+  Utiliza funções recursivas;
+  Gasto extra de memória. O algoritmo cria uma cópia do vetor para cada nível da chamada recursiva;
+  Na prática, é mais lento que o QuickSort no caso médio.
+
+*Implementação:
+
+**C**
+
+#include <stdio.h>
+#include <limits.h>
+#include <math.h>
+
+void merge(int *A,float p,float q,float r)
+{
+    float n = r - p + 1; /* number of elements in array A */
+    int n1 = (int) (q - p + 1);
+    int n2 = (int) (r - q);
+    printf("n2 = %d\n",n2);
+    int  i, j;
+    float k;
+
+    int *L, *R;
+    for (i = 1; i <= n1; i++){
+        L[i] = A[(int) (p + i - 1)];
+    }
+
+    for (j = 1; j < n2; j++){
+        R[j] = A[(int) (q + j)];
+    }
+
+    L[n1+1] = INT_MAX;
+    R[n2+1] = INT_MAX;
+
+    i = 1;
+    j = 1;
+
+    printf("p = %f\n",p);
+    printf("r = %f\n",r);
+
+    for (k = p; k <= r; k++){
+        printf("k=%f\n",k);
+        if (L[i] <= R[j]){
+            A[(int) k] = L[i];
+            i += 1;
+        }
+
+        else{
+            A[(int) k] = R[j];
+            j += 1;
+        }
+        
+void mergeSort (int *A,float p,float r) {
+  if (p < r) {
+    q = (p + r) / 2;
+    mergeSort(A, p, q);
+    mergeSort(A, q + 1, r);
+    merge(A, p, q, r)
+  }
+}
+
+____________________________________________________________________________________________
+
+void merge(int A[ ] , int start, int mid, int end) {
+ //stores the starting position of both parts in temporary variables.
+int p = start ,q = mid+1;
+
+int Arr[end-start+1] , k=0;
+
+for(int i = start ;i <= end ;i++) {
+    if(p > mid)      //checks if first part comes to an end or not .
+       Arr[ k++ ] = A[ q++] ;
+
+   else if ( q > end)   //checks if second part comes to an end or not
+       Arr[ k++ ] = A[ p++ ];
+
+   else if( A[ p ] < A[ q ])     //checks which part has smaller element.
+      Arr[ k++ ] = A[ p++ ];
+
+   else
+      Arr[ k++ ] = A[ q++];
+ }
+  for (int p=0 ; p< k ;p ++) {
+   /* Now the real array has elements in sorted manner including both 
+        parts.*/
+     A[ start++ ] = Arr[ p ] ;                          
+  }
+}
+
+void merge_sort (int A[ ] , int start , int end )
+   {
+           if( start < end ) {
+           int mid = (start + end ) / 2 ;           // defines the current array in 2 parts
+           merge_sort (A, start , mid ) ;                 // sort the 1st part of array
+           merge_sort (A,mid+1 , end ) ;              // sort the 2nd part of array
+
+         // merge the both parts by comparing elements of both the parts.
+          merge(A,start , mid , end );   
+   }                    
+}
+
+**Haskell**
+
+merge :: Ord a => [a] -> [a] -> [a]
+merge [] ys         = ys
+merge xs []         = xs
+merge (x:xs) (y:ys) | x < y     = x:merge xs (y:ys)
+                    | otherwise = y:merge (x:xs) ys
+
+halve :: [a] -> ([a],[a])
+halve xs = (take lhx xs, drop lhx xs)
+           where lhx = length xs `div` 2
+
+msort :: Ord a => [a] -> [a]
+msort []  = []
+msort [x] = [x]
+msort  xs = merge (msort left) (msort right)
+            where (left,right) = halve xs
