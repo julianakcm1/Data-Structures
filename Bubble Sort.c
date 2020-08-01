@@ -1,7 +1,7 @@
 #Bubble Sort
 
 !(https://he-s3.s3.amazonaws.com/media/uploads/2682167.png)
-
+/*
   A ideia é percorrer o vetor diversas vezes (tamanho do array - 1 vezes), e a cada passagem fazer flutuar para o topo o maior elemento 
 da sequência. Essa movimentação lembra a forma como as bolhas em um tanque de água procuram seu próprio nível, e disso vem o nome do 
 algoritmo.
@@ -19,7 +19,8 @@ algoritmo.
   Lento;
   Não apresenta bons resultados para lista grande;
   Indicado para ensino acadêmico, mas não para aplicações na vida real.
-  
+ */
+ 
 *Implementação:
 
 **C**
